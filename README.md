@@ -29,6 +29,51 @@ MYSQL과 같은 DATABASE 관리 프로그램을 목표로 잡고 개발을 진�
 파일 입출력을 통해 실제 DB처럼 동작할 수 있게끔 데이터 log를 저장하고 수정, 삭제, 변경과 같은 기능을 구현하여 보았습니다.
 DB에 대한 기본 개념을 공부할 수 있었으며, 구조체의 사용 및 데이터 파싱 능력을 많이 향상시킬 수 있었습니다.
 
+##### DBMS test case
+-----------------------------------------------------------------------
+CREATE DATABASE testDB1;
+CREATE DATABASE testDB2;
+USE testDB1;
+CREATE TABLE testTB1(id INT(11),title VARCHAR(100),text VARCHAR(50),dec VARCHAR(50));
+CREATE TABLE testTB2(id1 INT(11),title1 VARCHAR(100),text1 VARCHAR(50));
+CREATE TABLE testTB3(id3 INT(11),title3 VARCHAR(100));
+SHOW TABLES;
+SHOW DATABASES;
+INSERT INTO testTB1 (id, title, text, dec) VALUES (552, 'acc', '12', 'hdggggg');
+INSERT INTO testTB1 (id, title, text, dec) VALUES (44, 'ab', '12', 'ddddgg');
+INSERT INTO testTB1 (id, title, text, dec) VALUES (66, 'abc', '123', 'yyyyff');
+INSERT INTO testTB1 VALUES (77, 'abcd', '1234', 'bbbb');
+INSERT INTO testTB1 (id, title, text, dec) VALUES (34,'ss','12','dasfdgg');
+SELECT * FROM testTB1;
+
+SELECT * FROM testTB1 WHERE id = 66 OR text = '12';
+SELECT title, text FROM testTB1;
+SELECT id, dec FROM testTB1;
+SELECT title, text FROM testTB1 WHERE id = 44;
+SELECT * FROM testTB1 WHERE id = 44;
+SELECT id FROM testTB1 WHERE id = 44 OR id != 66;
+SELECT title, text FROM testTB1 WHERE id = 44 OR id != 66;
+SELECT * FROM testTB1 WHERE id != 44 OR id = 66;
+SELECT title, text FROM testTB1 WHERE text = '12' OR id != 66;
+SELECT title, text FROM testTB1 WHERE id = 66 AND id != 44;
+SELECT * FROM testTB1 WHERE id != 66 AND id != 44;
+SELECT * FROM testTB1 WHERE id = 66 AND id != 44;
+
+UPDATE testTB1 SET id = 55 WHERE id = 552;
+UPDATE testTB1 SET text = 'hey' WHERE id = 44;
+UPDATE testTB1 SET text = 'hi' WHERE text = '12';
+UPDATE testTB1 SET id = 11 WHERE id = 44 OR id != 66;
+UPDATE testTB1 SET id = 11 WHERE id = 44 AND id != 66;
+
+DELETE FROM testTB1;
+DELETE FROM testTB1 WHERE id = 66;
+DELETE FROM testTB1 WHERE id = 552;
+DELETE FROM testTB1 WHERE id = 34;
+DELETE FROM testTB1 WHERE id = 66 OR id != 44;
+DELETE FROM testTB1 WHERE id = 66 AND id != 44;
+
+-----------------------------------------------------------------------
+
 ##### DBMS
 ---------------------------------------------------------------------
 ![DB](https://user-images.githubusercontent.com/54059795/142727965-5d7c0ad3-b2c0-4540-9c06-72867033a4ac.png)
